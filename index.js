@@ -25,15 +25,19 @@ function promptUser(){
     },
     ])
 }
-function generatePdf(answers) {
+function generateHTML(answers) {
     return `
-myDoc.font("times roman")
-    .fontsize("28")
-    .text("hello Beenish")
+    <!DOCTYPE html>
+    <html lang="en">
+    <head></head>
+    <body>
+    <h1>my name is ${answers.name}</h1>
+    </body>
+    </html>
   `}
   promptUser()
   .then(function(answers) {
-    const pdfFile = generatepdf(answers);
+    const html = generateHTML(answers);
 
-    return writeFileAsync("index.pdf", pdfFile);
+    return writeFileAsync("index.html", html);
   })
